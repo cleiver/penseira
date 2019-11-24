@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', Helvetica, sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+    background-image: linear-gradient(180deg, #58a6ff, #fff);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+section {
+    margin: 10px 0;
+}
+
+.header {
+    text-align: center;
+}
+.header .logo {
+    display: block;
+    margin: 0 auto;
+}
+.header p {
+    font-size: larger;
+    padding: 10px 0;
+}
+
+.header .brand {
+    color: #b33535;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+}
+.footer a {
+    color: #b33535;
+    text-decoration: none;
+}
+.footer a:hover, .footer a:focus {
+    text-decoration: underline;
+}
+
+.bucket-itens ul {
+    text-align: center;
+}
+.bucket-itens li {
+    padding: 5px 0;
+}
+.bucket-itens a {
+    color: #321e4c;
+    text-decoration: none;
+}
+.bucket-itens a:hover, .bucket-itens a:active {
+    text-decoration: underline;
+}

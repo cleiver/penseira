@@ -1,0 +1,28 @@
+{
+  "name": "bucket",
+  "version": "1.0.0",
+  "description": "A place to store everything I want to check later",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/cleiver/bucket.git"
+  },
+  "author": "Cleiver Carvalhal Carneiro",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/cleiver/bucket/issues"
+  },
+  "homepage": "https://github.com/cleiver/bucket#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}

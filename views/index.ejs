@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bucket</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/forms.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <h1><img src="/imgs/bucket.png" alt="Bucket" class="logo"></h1>
+            <p>Wanna save something for later?</p>
+            <p>Throw it in a <span class="brand">bucket</span>!</p>
+        </section>
+        <section class="create-form">
+            <form method="post">
+                <label for="link">Link<input type="text" name="link" id="link"></label>
+                <label for="description">Description<input type="text" name="description" id="description"></label>
+                <button type="submit" class="button"><span>Throw into the bucket</span></button>
+            </form>
+        </section>
+        <section class="bucket-itens">
+            <ul>
+                <% links.forEach(link => { %>
+                <li><a href="<%=link.link%>" target="_blank"><%=link.description%></a></li>
+                <% }) %>
+            </ul>
+        </section>
+    </div>
+    <section class="footer"><p><a href="https://cleiver.me" target="_blank">cleiver.me</a></p></section>
+</body>
+
+</html>
