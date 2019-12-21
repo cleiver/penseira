@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
  */
-class Link
+class Link implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -70,5 +70,15 @@ class Link
         $this->description = $description;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'url' => $this->url
+        ];
     }
 }
