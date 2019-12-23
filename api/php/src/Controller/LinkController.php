@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Link;
 use App\Factory\LinkFactory;
+use App\Factory\ResponseFactory;
 use App\Repository\LinkRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,11 +30,21 @@ class LinkController extends AbstractController
      */
     private $linkFactory;
 
-    public function __construct(EntityManagerInterface $entityManager, LinkRepository $linkRepository, LinkFactory $linkFactory)
-    {
+    /**
+     * @var ResponseFactory
+     */
+    private $responseFactory;
+
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        LinkRepository $linkRepository,
+        LinkFactory $linkFactory,
+        ResponseFactory $responseFactory
+    ) {
         $this->entityManager = $entityManager;
         $this->linkRepository = $linkRepository;
         $this->linkFactory = $linkFactory;
+        $this->responseFactory = $responseFactory;
     }
 
     /**
@@ -56,7 +67,9 @@ class LinkController extends AbstractController
     {
         $links = $this->linkRepository->findAll();
 
-        return new JsonResponse($links);
+        $response = $this->responseFactory->create(200, 1, 1, 0, $links);
+
+        return $response;
     }
 
     /**
