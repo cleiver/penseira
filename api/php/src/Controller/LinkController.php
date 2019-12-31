@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Link;
 use App\Factory\LinkFactory;
 use App\Factory\ResponseFactory;
 use App\Repository\LinkRepository;
@@ -12,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 
 class LinkController extends AbstractController
 {
@@ -35,20 +35,29 @@ class LinkController extends AbstractController
      */
     private $responseFactory;
 
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
     public function __construct(
         EntityManagerInterface $entityManager,
         LinkRepository $linkRepository,
         LinkFactory $linkFactory,
-        ResponseFactory $responseFactory
+        ResponseFactory $responseFactory,
+        LoggerInterface $logger
     ) {
         $this->entityManager = $entityManager;
         $this->linkRepository = $linkRepository;
         $this->linkFactory = $linkFactory;
         $this->responseFactory = $responseFactory;
+        $this->logger = $logger;
     }
 
     /**
      * @Route("/links", methods={"POST"}, name="links-create")
+     * 
+     * @todo improve log with user info
      */
     public function create(Request $request): Response
     {
@@ -56,6 +65,11 @@ class LinkController extends AbstractController
 
         $this->entityManager->persist($link);
         $this->entityManager->flush();
+
+        $this->logger->notice('A new link to {url} was created with id {id}', [
+            'id' => $link->getId(),
+            'url' => $link->getUrl(),
+        ]);
 
         return new JsonResponse($link, Response::HTTP_CREATED);
     }
@@ -87,6 +101,8 @@ class LinkController extends AbstractController
 
     /**
      * @Route("/links/{id}", methods={"PUT"}, name="links-update")
+     * 
+     * @todo improve log with user info
      */
     public function update(int $id, Request $request): Response
     {
@@ -106,17 +122,29 @@ class LinkController extends AbstractController
 
         $this->entityManager->flush();
 
+        $this->logger->notice('The link with id {id} to {url} was updated', [
+            'id' => $link->getId(),
+            'url' => $link->getUrl(),
+        ]);
+
         return new JsonResponse($link);
     }
 
     /**
      * @Route("/links/{id}", methods={"DELETE"}, name="links-delete")
+     * 
+     * @todo improve log with user info
      */
     public function delete(int $id): Response
     {
         $link = $this->linkRepository->find($id);
         $this->entityManager->remove($link);
         $this->entityManager->flush();
+
+        $this->logger->notice('The link with {id} to {url} was deleted', [
+            'id' => $link->getId(),
+            'url' => $link->getUrl(),
+        ]);
 
         return new Response(null, Response::HTTP_NO_CONTENT);
     }
