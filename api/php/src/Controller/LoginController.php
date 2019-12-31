@@ -61,7 +61,7 @@ class LoginController extends AbstractController
 
         $token = JWT::encode(
             [
-                'username' => $user->getUsername()
+                'email' => $user->getEmail()
             ],
             '63b588cc6559c406f8a30ae836f271ea'
         );
