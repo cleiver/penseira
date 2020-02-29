@@ -32,6 +32,7 @@
     },
     "require-dev": {
         "phpmd/phpmd": "^2.8",
+        "phpstan/phpstan": "^0.12.11",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.14",
         "symfony/profiler-pack": "*",
