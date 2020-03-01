@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -24,10 +25,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
   use TargetPathTrait;
 
-  private $entityManager;
-  private $router;
-  private $csrfTokenManager;
-  private $passwordEncoder;
+  private EntityManagerInterface $entityManager;
+  private RouterInterface $router;
+  private CsrfTokenManagerInterface $csrfTokenManager;
+  private UserPasswordEncoderInterface $passwordEncoder;
 
   public function __construct(EntityManagerInterface $entityManager, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
   {
@@ -58,14 +59,19 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     return $credentials;
   }
 
-  public function getUser($credentials, UserProviderInterface $userProvider)
+  public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
   {
     $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+
     if (!$this->csrfTokenManager->isTokenValid($token)) {
       throw new InvalidCsrfTokenException();
     }
 
-    $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+    $user = $this->entityManager
+      ->getRepository(User::class)
+      ->findOneBy([
+        'email' => $credentials['email']
+      ]);
 
     if (!$user) {
       // fail authentication with a custom error
@@ -80,7 +86,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
   }
 
-  public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+  public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
   {
     $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
 
@@ -88,7 +94,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
       return new RedirectResponse($targetPath);
     }
 
-    return $this->router->generate('link_index');
+    return new RedirectResponse('link_index');
   }
 
   protected function getLoginUrl()
