@@ -1,21 +1,51 @@
-# Bucket
+![GitHub language count](https://img.shields.io/github/languages/count/cleiver/bucket?style=plastic)
+![GitHub](https://img.shields.io/github/license/cleiver/bucket?style=plastic)
 
-![Bucket in development](bucket-draft.png)
+<h1 align="center"><img src="bucket.png" alt="Bucket logo" /><br>Bucket</h1>
 
-Some reminders for myself 😁
 
-## Development installation
+## So, what's this? 🤔
+I have this thing where instead of saving a page for later, I keep it as an open tab on my smartphone. After losing many interesting pages because chrome simply vanish with my tabs, I decided to join my willing to develop something with the need to keep these links safe.
 
-### Docker instances
+## 💻 Development installation
+
+### 📃 Prerequisites
+- [Git](https://git-scm.com)
+- [Composer](https://getcomposer.org)
+- [Docker](https://www.docker.com)
+- [Symfony CLI](https://symfony.com/download)
+
+### ⤵ Download and installation
 
 ```bash
-$ docker pull mysql
-$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=***** -d mysql
-$ docker pull phpmyadmin/phpmyadmin
-$ docker run --name phpmyadmin -d --link mysql:db -p 8080:80 phpmyadmin/phpmyadmin
+$ https://github.com/cleiver/bucket.git
+$ cd bucket/api
+$ composer install
 ```
 
-## Deploy
+### 🐳 MySQL Database
+
+```bash
+# Download and run mysql image
+$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql
+
+# Create database
+$ docker exec -it mysql bash
+$ mysql -u root -p
+mysql> create database bucket;
+
+# Leave both the mysql console and the container shell and run the migration command
+$ php bin/console doctrine:migrations:migrate
+```
+
+### 🌋 API Start
+```bash
+$ symfony serve
+```
+
+<p align="center">👷🚧 This document is still under construction 🏗</p>
+
+## 🎓 Deploy
 
 ```bash
 $ export APP_ENV=prod
