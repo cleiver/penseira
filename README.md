@@ -18,9 +18,8 @@ I have this thing where instead of saving a page for later, I keep it as an open
 ### ⤵ Download and installation
 
 ```bash
+# Cloning repository
 $ https://github.com/cleiver/bucket.git
-$ cd bucket/api
-$ composer install
 ```
 
 ### 🐳 MySQL Database
@@ -33,15 +32,31 @@ $ docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql
 $ docker exec -it mysql bash
 $ mysql -u root -p
 mysql> create database bucket;
-
-# Leave both the mysql console and the container shell and run the migration command
-$ php bin/console doctrine:migrations:migrate
 ```
 
 ### 🌋 API Start
 ```bash
+# Install dependencies
+$ cd bucket/api
+$ composer install
+
+# Create database tables
+$ php bin/console doctrine:migrations:migrate
+
+# Start local PHP server
 $ symfony serve
 ```
+
+### ⚛ Web Interface
+```bash
+# Install dependencies
+$ yarn
+
+# Start local server to run the application
+$ yarn start
+```
+
+---
 
 <p align="center">👷🚧 This document is still under construction 🏗</p>
 
