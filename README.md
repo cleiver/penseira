@@ -26,34 +26,12 @@ $ https://github.com/cleiver/bucket.git
 
 ```bash
 # Download and run mysql image
-$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql
+$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql:5.7
 
 # Create database
 $ docker exec -it mysql bash
 $ mysql -u root -p
 mysql> create database bucket;
-```
-
-### 🌋 API Start
-```bash
-# Install dependencies
-$ cd bucket/api
-$ composer install
-
-# Create database tables
-$ php bin/console doctrine:migrations:migrate
-
-# Start local PHP server
-$ symfony serve
-```
-
-### ⚛ Web Interface
-```bash
-# Install dependencies
-$ yarn
-
-# Start local server to run the application
-$ yarn start
 ```
 
 ---
