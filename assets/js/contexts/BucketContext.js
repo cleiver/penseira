@@ -7,18 +7,15 @@ export default class BucketContextProvider extends React.Component {
     super(props);
     this.state = {
       bucket: [
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
-        {name: 'meia', url: 'site'},
+        { name: "meia", url: "site" },
+        { name: "meia", url: "site" },
       ],
     };
   }
 
-  createItem() {}
+  createItem(item) {
+    this.setState({ bucket: [item, ...this.state.bucket] });
+  }
   fetchItem() {}
   updateItem() {}
   deleteItem() {}
