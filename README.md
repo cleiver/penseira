@@ -35,7 +35,12 @@ Tinha começado com um _sisteminha_ com um CRUDzin básico só pra guardar os li
 - [troubleshooting mysteries](https://mysteries.wizardzines.com)
 - [Git Explorer](https://gitexplorer.com)
 - [Construtor de RegEx](https://regexr.com)
+- [The Lorem Ipsum for photos](https://picsum.photos)
+- [The Lorem Ipsum for logos](https://logoipsum.com)
+- [Create and share beautiful images of your source code](https://carbon.now.sh)
+- [Convert from English to RegEx](https://www.autoregex.xyz)
 
-### Recursos
+### ⚙️ Recursos
 - [APIs públicas pra futucar](https://github.com/public-apis/public-apis)
 - [Dev Fonts](https://devfonts.gafi.dev)
+- [Lucide Icons](https://lucide.dev)
