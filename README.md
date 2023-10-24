@@ -21,6 +21,7 @@ Tinha começado com um _sisteminha_ com um CRUDzin básico só pra guardar os li
 
 - [Dicas de segurança com tecnologia](https://www.lambda3.com.br/2022/02/dicas-de-seguranca-com-tecnologia)
 - [Ferramentas para ajudar a pensar melhor](https://untools.co)
+- [Level Up Coding](https://blog.levelupcoding.co)
 
 ### 🧑🏻‍💻 ctrl+c ctrl+v
 - [Como pegar o XML de uma requisição SOAP com C#](https://stackoverflow.com/questions/5493639/how-do-i-get-the-xml-soap-request-of-an-wcf-web-service-request)
