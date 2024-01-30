@@ -3,7 +3,7 @@
 ## Queisso? 🤔
 Como muitos, eu tenho essa mania chata de abrir várias abas para ler depois e acabo deixando pra lá. Depois de perder essas abas pro Chrome, que de tempos em tempos simplesmente fecha tudo, decidi guardar isso em algum lugar.
 
-Tinha começado com um _sisteminha_ com um CRUDzin básico só pra guardar os links, mas não tenho mais acesos ao host e esqueci de fazer um backup do banco (casa de ferreiro né...), aí comecei a usar o Twitter mas também não dá mais pra confiar, então então tô simplificando tudo e partindo o Markdown da massa aqui mesmo. O basicão sempre salva no fim das contas... 🤙
+Tinha começado com um _sisteminha_ com um CRUDzin básico só pra guardar os links, mas não tenho mais acesos ao host e esqueci de fazer um backup do banco (casa de ferreiro né...), aí comecei a usar o Twitter mas também não dá mais pra confiar, então então tô simplificando tudo e partindo pro Markdown da massa aqui mesmo. O basicão sempre salva no fim das contas... 🤙
 
 ## E esse nome? 🧐
 
@@ -45,3 +45,6 @@ Tinha começado com um _sisteminha_ com um CRUDzin básico só pra guardar os li
 - [APIs públicas pra futucar](https://github.com/public-apis/public-apis)
 - [Dev Fonts](https://devfonts.gafi.dev)
 - [Lucide Icons](https://lucide.dev)
+
+### 🐧 Gambiarra pro linux
+- [Conectar ao CheckPoint VPN](https://github.com/ruyrybeyro/chrootvpn)
